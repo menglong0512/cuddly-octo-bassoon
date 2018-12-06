@@ -1,25 +1,30 @@
 <template>
     <div>
-        <span>{{msg}}</span>
+        <div>{{msg}}</div>
         input1: <input type="text" v-model="input1">
-        <button v-on:click="lookView">view</button>
-        <template></template>
+        <button @click="lookView">view</button>
+        <interior-view :indexOut='input1'></interior-view>
+
+        <router-view></router-view>
     </div>
 </template>
 
 <script lang="ts">
-/* eslint-disable */
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import interiorView from './indexView/interior.vue'
 
 // @Component 修饰符注明了此类为一个 Vue 组件
-@Component({})
+@Component({
+    components: {interiorView}
+})
+
 export default class indexClass extends Vue {
     msg: string = 'Welcome TS'
     input1: string = ''
 
-    lookView = () => {
-        console.log('lookView')
+    lookView() {
+        console.log('点了view')
     }
 }
 
