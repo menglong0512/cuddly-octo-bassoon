@@ -4,13 +4,13 @@ import indexView from '@/components/index.vue'
 
 Vue.use(Router)
 
-const routes = [
-  // {path: '/', name: 'HelloWorld', component: () => require('@/components/HelloWorld.vue')},
-  {path: '/', name: 'index', component: require('@/components/index.vue').default }
-]
-
 const router = new Router({
-  routes
+  routes: [
+    // {path: '/', name: 'login', component: () => require('@/components/login.vue')},
+    {path: '/index', name: 'index', component: require('@/components/index.vue').default, children:[
+      {path: 'indexView_1', name: 'indexView_1', component: require('@/components/indexView/one.vue').default}
+    ]}
+  ]
 })
 
 export default router;
