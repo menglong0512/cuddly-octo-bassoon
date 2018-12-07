@@ -26,6 +26,14 @@ export default class indexClass extends Vue {
     lookView() {
         console.log('点了view')
     }
+
+    //钩子
+    created() {
+        console.log('在模板渲染成html前调用')
+    }
+    mounted() {
+        console.log('在模板渲染成html后调用')
+    }
 }
 
 </script>
