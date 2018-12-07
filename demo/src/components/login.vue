@@ -20,7 +20,7 @@ export default class indexClass extends Vue {
     upass: string = ''
 
     login() {
-        this.$router.push('/index')
+        this.$router.push('/index/nest_1')
     }
 }
 
