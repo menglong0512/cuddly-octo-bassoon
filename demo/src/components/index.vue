@@ -2,6 +2,7 @@
     <div>
         <div>{{msg}}</div>
         input1: <input type="text" v-model="input1">
+        <p>{{comMsg}}</p>
         <button @click="lookView">view</button>
         <interior-view :indexOut='input1'></interior-view>
 
@@ -16,7 +17,8 @@ import interiorView from './indexView/interior.vue'
 
 // @Component 修饰符注明了此类为一个 Vue 组件
 @Component({
-    components: {interiorView}
+    components: {interiorView},
+    props:{proVal:String}
 })
 
 export default class indexClass extends Vue {
@@ -24,7 +26,7 @@ export default class indexClass extends Vue {
     input1: string = ''
 
     lookView() {
-        console.log('点了view')
+        console.log(this.input1)
     }
 
     //钩子
@@ -33,6 +35,11 @@ export default class indexClass extends Vue {
     }
     mounted() {
         console.log('在模板渲染成html后调用')
+    }
+
+    // 计算属性，相当与computed
+    get comMsg(){
+        return `${this.input1}+${this.input1}`
     }
 }
 

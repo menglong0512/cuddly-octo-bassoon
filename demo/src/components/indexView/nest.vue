@@ -1,7 +1,8 @@
 <template>
     <div>
         子页面
-        数据1: {{input1}}
+        <!-- <p>数据1: {{input1}}</p> -->
+        <!-- <p>*2: {{comMsg}}</p> -->
     </div>
 </template>
 
@@ -14,5 +15,6 @@ import Component from 'vue-class-component'
 export default class next extends Vue {
     input1: string = ''
 
+    
 }
 </script>

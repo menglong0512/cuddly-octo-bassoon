@@ -9,7 +9,8 @@ const router = new Router({
     {path: '/', name: 'login', component: () => import('@/components/login.vue')},
     {path: '/index', name: 'index', component: () => import('@/components/index.vue'), children: [
       {path: 'nest_1', name: 'nest_1', component: () => import('@/components/indexView/nest.vue')}
-    ]}
+    ]},
+    // {path: '/props', name: 'props', component: () => import('@//components/props.vue')}
   ]
 })
 

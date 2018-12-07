@@ -1,17 +1,21 @@
 <template>
     <div>
-        <span>输入：{{indexOut}}</span>
+        <p>输入：{{indexOut}}</p>
+        <p>{{comOut}}</p>
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Component from 'vue-class-component'
+// import Component from 'vue-class-component'
+import {Component, Prop} from 'vue-property-decorator'
 
-@Component({
-    props: {indexOut: String}
-})
+@Component
 export default class interior extends Vue {
-    // indexOut: string = ''
+    @Prop({default: ''}) indexOut!: string
+
+    get comOut(){
+        return `${this.indexOut}${this.indexOut}`
+    }
 }
 </script>
