@@ -4,7 +4,7 @@
         input1: <input type="text" v-model="input1">
         <p>{{comMsg}}</p>
         <button @click="lookView">view</button>
-        <interior-view :indexOut='input1'></interior-view>
+        <interior-view :indexOut='input1' @reset-emit='parentMethod'></interior-view>
 
         <router-view></router-view>
     </div>
@@ -25,16 +25,20 @@ export default class indexClass extends Vue {
     msg: string = 'Welcome TS'
     input1: string = ''
 
-    lookView() {
-        console.log(this.input1)
+    lookView(): void {
+        console.log(this.input1);
+    }
+
+    parentMethod(val: string): void {
+        console.log(`index.uve -> ${val}`);
     }
 
     //钩子
     created() {
-        console.log('在模板渲染成html前调用')
+        console.log('在模板渲染成html前调用');
     }
     mounted() {
-        console.log('在模板渲染成html后调用')
+        console.log('在模板渲染成html后调用');
     }
 
     // 计算属性，相当与computed
