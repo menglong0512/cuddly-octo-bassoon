@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>{{msg}}</div>
+        <div>{{vuexUname}}</div>
         input1: <input type="text" v-model="input1">
         <p>{{comMsg}}</p>
         <button @click="lookView">view</button>
@@ -13,6 +13,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import {State}  from 'vuex-class'
+
 import interiorView from './indexView/interior.vue'
 
 // @Component 修饰符注明了此类为一个 Vue 组件
@@ -22,13 +24,15 @@ import interiorView from './indexView/interior.vue'
 })
 
 export default class indexClass extends Vue {
-    msg: string = 'Welcome TS'
     input1: string = ''
+
+    @State(state => state.box.uname) vuexUname!:string
 
     lookView(): void {
         console.log(this.input1);
     }
 
+    // 接受子页面发送的数据
     parentMethod(val: string): void {
         console.log(`index.uve -> ${val}`);
     }
@@ -38,7 +42,7 @@ export default class indexClass extends Vue {
         console.log('在模板渲染成html前调用');
     }
     mounted() {
-        console.log('在模板渲染成html后调用');
+        console.log(this.vuexUname);
     }
 
     // 计算属性，相当与computed
