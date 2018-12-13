@@ -9,7 +9,10 @@ import {Prop, Watch, Emit} from 'vue-property-decorator'
  * @extends {Vue}
  */
 export class Basis extends Vue{
-    
+    get(apiUrl: string, query?: object){
+        
+        // return {} 
+    }
 }
 
 export {Component, Prop, Watch, Emit}
