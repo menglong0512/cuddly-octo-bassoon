@@ -12,11 +12,6 @@ import axios from 'axios'
 export class Basis extends Vue{
 
     /**
-     * 请求地址
-     */
-    siteServer: string = '';
-
-    /**
      * ajax请求 -- axios
      * @param method 请求方式
      * @param apiUrl 请求地址
