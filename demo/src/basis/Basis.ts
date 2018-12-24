@@ -36,7 +36,7 @@ class Basis extends Vue{
                 axios({
                     method: method,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
-                    url: `${this.siteServer}${apiUrl}`,
+                    url: `${apiUrl}`,
                     timeout: 30000,
                     data: queryData
                 }).then(response => {
