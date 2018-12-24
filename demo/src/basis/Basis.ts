@@ -9,11 +9,7 @@ import axios from 'axios'
  * @class Basis
  * @extends {Vue}
  */
-<<<<<<< HEAD
-export class Basis extends Vue{
-=======
 class Basis extends Vue{
->>>>>>> 69f7692a0169455da0ab2a5d043627686e97b0d8
 
     /**
      * ajax请求 -- axios
