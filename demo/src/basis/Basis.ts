@@ -9,7 +9,11 @@ import axios from 'axios'
  * @class Basis
  * @extends {Vue}
  */
+<<<<<<< HEAD
 export class Basis extends Vue{
+=======
+class Basis extends Vue{
+>>>>>>> 69f7692a0169455da0ab2a5d043627686e97b0d8
 
     /**
      * ajax请求 -- axios
@@ -54,8 +58,82 @@ export class Basis extends Vue{
 
     }
 
-    myfecth(){}
-    
+    // myfecth(){}
+    /**
+     * 写cookies
+     * @param {string} name key值
+     * @param {string} value 
+     * @param {string} expiredays 过期时间，单位：分钟
+     */
+    setCookie(name: string, value: string, expiredays: number=60){
+        var exp = new Date();
+        exp.setTime(exp.getTime() + expiredays*60*1000);
+        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toUTCString();
+    }
+    /**
+     * 读取cookies
+     * @param {string} name key
+     */
+    getCookie(name: string):string|null {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+ 
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    /**
+     * 删除cookies
+     * @param {string} name key
+     */
+    delCookie(name: string){
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = this.getCookie(name);
+        if(cval!=null)
+        document.cookie= name + "="+cval+";expires="+exp.toUTCString();
+    }
+
+    /**
+     * sessionStorage存储
+     * @param {object} saveObj 要存储的值
+     */
+    setSession(saveObj: any){
+        for(let key in saveObj){
+            sessionStorage.setItem(key, saveObj[key]);
+        }
+    }
+
+    /**
+     * sessionStorage取值
+     * @param {string} key 
+     */
+    getSession(key: string): string|null{
+        return sessionStorage.getItem(key);
+    }
+
+    /**
+     * 删除sessionStorage值
+     * @param {array|string|undefind} key 
+     */
+    delSession(key: string){
+        switch ( typeof(key) ){
+            case 'string':
+                sessionStorage.removeItem(key);
+                break;
+            case 'object':
+                for (const arrVal of key) {
+                    sessionStorage.removeItem(arrVal);
+                }
+                break;
+            default:
+                sessionStorage.clear();
+        }
+    }
 }
 
-export {Component, Prop, Watch, Emit}
+const basis = function () {
+    return new Basis()
+}
+
+export {basis, Component, Prop, Watch, Emit}

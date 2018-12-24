@@ -16,6 +16,8 @@ import Component from 'vue-class-component'
 import {State}  from 'vuex-class'
 
 import interiorView from './indexView/interior.vue'
+import { basis } from '../basis/Basis';
+import serUrl from '../basis/site';
 
 // @Component 修饰符注明了此类为一个 Vue 组件
 @Component({
@@ -23,13 +25,15 @@ import interiorView from './indexView/interior.vue'
     props:{proVal:String}
 })
 
-export default class indexClass extends Vue {
-    input1: string = ''
+export default class index extends Vue {
+    input1: string = '';
 
-    @State(state => state.box.uname) vuexUname!:string
+    @State(state => state.box.uname) vuexUname!:string;
 
-    lookView(): void {
-        console.log(this.input1);
+    async lookView() {
+        // console.log(this.input1);
+        let xxx = await basis().SEQAjax('POST','/merchants/loginPlatform',{'q':'词语'});
+        console.log(xxx);
     }
 
     // 接受子页面发送的数据
@@ -47,7 +51,7 @@ export default class indexClass extends Vue {
 
     // 计算属性，相当与computed
     get comMsg(){
-        return `${this.input1}+${this.input1}`
+        return `${this.input1}+${this.input1}`;
     }
 }
 
